@@ -1,0 +1,21 @@
+
+Aihe: 	Ristinolla
+
+	Toteutetaan perinteinen ristinollapeli (tic-tac toe), jota pystyy pelaamaan graafisen 
+	käyttöliittymän välityksellä kaksi pelaajaa.
+
+Ominaisuudet:
+	
+	Kaksi eri symbolia jotka kuvaavat pelaajien merkkejä X ja O	
+	Pelilauta 3x3 suuruinen ruudukko 
+	Palkki joka näyttää kumpi pelaajista "player1" vai "player2" on vuorossa
+	Graafinen käyttöliittymä jota ohjataan hiirellä
+	Ilmoittaa kumpi pelaaja voittaa tai jos peli päättyy tasan
+	Mahdollisuus aloittaa uusipeli
+	Mahdollisuus lopettaa peli
+
+	
+Haaveissa:
+	
+	Yksinpeli (en tiedä kuinka pieni tekoäly riittää)
+	Voittolaskuri
