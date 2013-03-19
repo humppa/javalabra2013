@@ -1,2 +1,5 @@
 Päivämäärä - Käytetty aika - Tuntia ja minuuttia - Ajankäytön kohde
+
 12.3	   - 30min				 - Github valmistelu ja aihemäärittelyn aloitus
+19.3	   - 3h - 4h				 - Ohjelmoinnin aloitus, Ensimmäiset testit, määrittelyvaiheen luokkakaavio
+						   Perehtyminen aineistoon
