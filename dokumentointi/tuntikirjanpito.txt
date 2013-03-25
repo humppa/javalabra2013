@@ -3,4 +3,6 @@ P‰iv‰m‰‰r‰ - K‰ytetty aika - Tuntia ja minuuttia - Ajank‰ytˆn kohde
 12.3	   - 30min				 - Github valmistelu ja aihem‰‰rittelyn aloitus
 19.3	   - 3h - 4h				 - Ohjelmoinnin aloitus, Ensimm‰iset testit, m‰‰rittelyvaiheen luokkakaavio
 						   Perehtyminen aineistoon
-25.3	   - 3h - 4h				 - Koodaamista, Testej‰ lis‰‰
+25.3	   - 3h					 - Koodaamista, Testej‰ lis‰‰
+26.3	   - 2h 				 - Lis‰‰ testej‰, testien refaktorointia ja optimointia, voittom‰‰rien laskuri, 
+						   testien kommentteja
