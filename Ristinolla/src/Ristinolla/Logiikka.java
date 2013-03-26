@@ -1,4 +1,4 @@
-package ristinolla;
+package Ristinolla;
 
 public final class Logiikka {
 

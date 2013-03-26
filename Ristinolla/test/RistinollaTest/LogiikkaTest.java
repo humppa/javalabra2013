@@ -1,8 +1,10 @@
+package RistinollaTest;
+
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import ristinolla.Logiikka;
+import Ristinolla.Logiikka;
 
 public class LogiikkaTest {
 

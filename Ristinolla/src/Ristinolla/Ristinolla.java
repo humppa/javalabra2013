@@ -1,5 +1,5 @@
 
-package ristinolla;
+package Ristinolla;
 
 
 public class Ristinolla {
