@@ -6,3 +6,4 @@ Päivämäärä - Käytetty aika - Tuntia ja minuuttia - Ajankäytön kohde
 25.3	   - 3h					 - Koodaamista, Testejä lisää
 26.3	   - 2h 				 - Lisää testejä, testien refaktorointia ja optimointia, voittomäärien laskuri, 
 						   testien kommentteja
+26.3	   - 3h					 - Testien virhetilanteiden käsittelyyn tutustumista, koodin refaktorointia

@@ -34,7 +34,7 @@ public class LogiikkaTest {
         testinolla.setMerkkiRuutuun(8);
         testinolla.setMerkkiRuutuun(2);
     }
-    
+
     public void tasapeli() {
         testinolla.setMerkkiRuutuun(0);
         testinolla.setMerkkiRuutuun(1);
@@ -75,7 +75,7 @@ public class LogiikkaTest {
         testinolla.setMerkkiRuutuun(0);
         Assert.assertEquals(1, testinolla.getMerkkienMaara());
     }
-
+    
     @Test
     public void merkkienMaaraKasvaaOikeinUsealla() {
         testinolla.setMerkkiRuutuun(0);
@@ -133,7 +133,7 @@ public class LogiikkaTest {
     }
 
     @Test
-    public void PelinumeroEkassaPelissaYksi() {
+    public void pelinumeroEkassaPelissaYksi() {
         Assert.assertEquals(1, testinolla.pelinumero());
     }
 
@@ -143,14 +143,20 @@ public class LogiikkaTest {
         Assert.assertEquals(2, testinolla.pelinumero());
     }
 
-    @Test
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void pelilaudanUlkopuolelleEiVoiLaittaaMerkkejä() {
+        testinolla.setMerkkiRuutuun(10);
+    }
+    
+    @Test(expected = IllegalArgumentException.class)
     public void samaanRuutuunEiVoiLaittaaUseitaMerkkeja() {
         testinolla.setMerkkiRuutuun(0);
         testinolla.setMerkkiRuutuun(0);
         Assert.assertEquals(1, testinolla.getMerkkienMaara());
+//        Assert.assertEquals(1, testinolla.getRuudunMerkki(0));
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void samaanRuutuunEiVoiLaittaaUseitaMerkkeja2() {
         testinolla.setMerkkiRuutuun(0);
         testinolla.setMerkkiRuutuun(1);
@@ -158,6 +164,9 @@ public class LogiikkaTest {
         testinolla.setMerkkiRuutuun(8);
         testinolla.setMerkkiRuutuun(0);
         Assert.assertEquals(3, testinolla.getMerkkienMaara());
+//        Assert.assertEquals(1, testinolla.getRuudunMerkki(0));
+//        Assert.assertEquals(1, testinolla.getRuudunMerkki(8));
+//        Assert.assertEquals(2, testinolla.getRuudunMerkki(1));
     }
 
     @Test
@@ -265,12 +274,10 @@ public class LogiikkaTest {
 
     @Test
     public void testaaKasvataVoittojaUseassaPelissa() {
-        aloittajaVoittaaVaakarivilla();
-        tarkistaPelintilaJaAloitaUusipeli();
-        aloittajaVoittaaVaakarivilla();
-        tarkistaPelintilaJaAloitaUusipeli();
-        aloittajaVoittaaVaakarivilla();
-        tarkistaPelintilaJaAloitaUusipeli();
+        for (int i = 0; i < 3; i++) {
+            aloittajaVoittaaVaakarivilla();
+            tarkistaPelintilaJaAloitaUusipeli();
+        }
         Assert.assertEquals(2, testinolla.getRistinVoitot());
         Assert.assertEquals(1, testinolla.getYmpyranVoitot());
     }
@@ -287,14 +294,24 @@ public class LogiikkaTest {
     }
 
     @Test
-    public void testaaTasapelejaJaVoittoja() {
+    public void testaaTasapelejaJaVoittojaKunToinenVoittaa() {
         aloittajaVoittaaVaakarivilla();
         tarkistaPelintilaJaAloitaUusipeli();
         tasapeli();
         tarkistaPelintilaJaAloitaUusipeli();
         aloittajaVoittaaVaakarivilla();
         tarkistaPelintilaJaAloitaUusipeli();
-        Assert.assertEquals(0, testinolla.getYmpyranVoitot());
+        Assert.assertEquals("Ympyranvoitot", 0, testinolla.getYmpyranVoitot());
         Assert.assertEquals(2, testinolla.getRistinVoitot());
+    }
+
+    @Test
+    public void testaaTasapeliJaVoittojenMaara() {
+        tasapeli();
+        tarkistaPelintilaJaAloitaUusipeli();
+        tasapeli();
+        tarkistaPelintilaJaAloitaUusipeli();
+        Assert.assertEquals(0, testinolla.getYmpyranVoitot());
+        Assert.assertEquals(0, testinolla.getRistinVoitot());
     }
 }

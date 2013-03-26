@@ -65,6 +65,13 @@ public final class Logiikka {
         }
     }
 
+//    public int getPelinAloittaja() {
+//        if (pelinumero > 1 && pelinumero % 2 == 0) {
+//            return 2;
+//        } else {
+//            return 1;
+//        }
+//    }
     public int getMerkkienMaara() {
         int merkkeja = 0;
         for (int i = 0; i < this.pelialusta.length; i++) {
@@ -76,12 +83,18 @@ public final class Logiikka {
     }
 
     public void setMerkkiRuutuun(int ruutu) {
-        if (this.pelialusta[ruutu] == 0 && ruutu < 9 && ruutu >= 0) {
-            if (getPelivuorossa() == 1) {
-                this.pelialusta[ruutu] = 1;
+        if (this.pelialusta[ruutu] == 0) {
+            if (ruutu >= 0 && ruutu < 9) {
+                if (getPelivuorossa() == 1) {
+                    this.pelialusta[ruutu] = 1;
+                } else {
+                    this.pelialusta[ruutu] = 2;
+                }
             } else {
-                this.pelialusta[ruutu] = 2;
+                throw new IllegalArgumentException("Ruudun tulee olla ruudukon sisällä");
             }
+        } else {
+            throw new IllegalArgumentException("Ruudussa on jo merkki");
         }
     }
 
@@ -109,17 +122,14 @@ public final class Logiikka {
             }
             x = x + 3;
         }
-
         //  Tarkistaa vinorivin oikeelta ylhaalta vasemmalle alas
         if (this.pelialusta[0] != 0 && this.pelialusta[0] == this.pelialusta[4] && this.pelialusta[0] == this.pelialusta[8]) {
             return this.pelialusta[0];
         }
-
         //  Tarkistaa vinorivin vasemmalta alhaalta oikealle ylos
         if (this.pelialusta[0] != 0 && this.pelialusta[2] == this.pelialusta[4] && this.pelialusta[2] == this.pelialusta[6]) {
             return this.pelialusta[2];
         }
-
         return 0;
     }
 
@@ -128,7 +138,7 @@ public final class Logiikka {
             return true;
         } else {
             if (tarkistaVoittaja() == 1 || tarkistaVoittaja() == 2) {
-                kasvataVoittoja(tarkistaVoittaja());
+                kasvataVoittolaskuria(tarkistaVoittaja());
                 return true;
             } else {
                 return false;
@@ -136,7 +146,7 @@ public final class Logiikka {
         }
     }
 
-    public void kasvataVoittoja(int voittaja) {
+    public void kasvataVoittolaskuria(int voittaja) {
         if (voittaja == 1) {
             this.ristinVoitot++;
         } else if (voittaja == 2) {
