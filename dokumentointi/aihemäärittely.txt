@@ -6,16 +6,42 @@ Aihe: 	Ristinolla
 
 Ominaisuudet:
 	
-	Kaksi eri symbolia jotka kuvaavat pelaajien merkkej‰ X ja O	
 	Pelilauta 3x3 suuruinen ruudukko 
+
+	Kaksi eri symbolia jotka kuvaavat pelaajien merkkej‰ X ja O
+	Merkeist‰ k‰ytet‰‰n peliss‰ nimityst‰ risti (X) ja ympyr‰ (O)	
+	
 	Palkki joka n‰ytt‰‰ kumpi pelaajista "player1" vai "player2" on vuorossa
 	Graafinen k‰yttˆliittym‰ jota ohjataan hiirell‰
 	Ilmoittaa kumpi pelaaja voittaa tai jos peli p‰‰ttyy tasan
+
 	Mahdollisuus aloittaa uusipeli
 	Mahdollisuus lopettaa peli
 
-	
-Haaveissa:
-	
-	Yksinpeli (en tied‰ kuinka pieni teko‰ly riitt‰‰)
+	Pelinaloittaja vuorottelee
+
 	Voittolaskuri
+
+Pelinkulku:
+
+	Ensimm‰isen pelin aloittaa pelaaja1 jonka merkkin‰ toimii risti (X)
+
+	Peli p‰‰ttyy joko toisen pelaajan voittoon pelaaja1 tai pelaaja2, jos kumpikaan pelaaja ei saa
+	muodostettua kolmen merkin suoraa ennen pelilaudan t‰yttymist‰ peli p‰‰ttyy tasan
+
+		Jos peli on p‰‰ttynyt toisen pelaajan voittoon, kasvatetaan kyseisen pelaajan voittolaskuria
+
+		Mik‰li peli on p‰‰ttynyt tasan ei voittolaskuriin kajota
+
+     		Pelaajilla on mahdollisuus aloittaa uusipeli tai lopettaa peli (ohjelma)
+      
+      	Mik‰li uusipeli aloitetaan on ensimm‰isen‰ vuorossa pelaaja2 jonka merkkin‰ toimii ympyr‰ (O)
+      
+        Aiempi toiminnallisuus toistuu
+
+	Seuraavan pelin aloittaa pelaaja1 (X)
+
+	
+Suunnitteilla:
+	
+	Yksinpeli (AI)
