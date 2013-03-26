@@ -143,19 +143,28 @@ public class LogiikkaTest {
         Assert.assertEquals(2, testinolla.pelinumero());
     }
 
+    //  Pelilaudan ulkopuolelle asetettava merkki heittää virheilmoituksen;
     @Test(expected = IndexOutOfBoundsException.class)
-    public void pelilaudanUlkopuolelleEiVoiLaittaaMerkkejä() {
+    public void pelilaudanUlkopuolelleEiVoiAsettaaMerkkia() {
         testinolla.setMerkkiRuutuun(10);
     }
     
+    //  Pelilaudan ulkopuolelle asetettava merkki heittää virheilmoituksen;
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void pelilaudanUlkopuolelleEiVoiAsettaaMerkkeja() {
+        testinolla.setMerkkiRuutuun(-100);
+        testinolla.setMerkkiRuutuun(77);
+    }
+    
+    //  Jos ruudussa on jo merkki, ei voida uutta merkkiä asettaa ruutuun;
     @Test(expected = IllegalArgumentException.class)
     public void samaanRuutuunEiVoiLaittaaUseitaMerkkeja() {
         testinolla.setMerkkiRuutuun(0);
         testinolla.setMerkkiRuutuun(0);
         Assert.assertEquals(1, testinolla.getMerkkienMaara());
-//        Assert.assertEquals(1, testinolla.getRuudunMerkki(0));
     }
 
+    //  Jos ruudussa on jo merkki, ei voida uutta merkkiä asettaa ruutuun;
     @Test(expected = IllegalArgumentException.class)
     public void samaanRuutuunEiVoiLaittaaUseitaMerkkeja2() {
         testinolla.setMerkkiRuutuun(0);
@@ -164,9 +173,6 @@ public class LogiikkaTest {
         testinolla.setMerkkiRuutuun(8);
         testinolla.setMerkkiRuutuun(0);
         Assert.assertEquals(3, testinolla.getMerkkienMaara());
-//        Assert.assertEquals(1, testinolla.getRuudunMerkki(0));
-//        Assert.assertEquals(1, testinolla.getRuudunMerkki(8));
-//        Assert.assertEquals(2, testinolla.getRuudunMerkki(1));
     }
 
     @Test
@@ -278,8 +284,8 @@ public class LogiikkaTest {
             aloittajaVoittaaVaakarivilla();
             tarkistaPelintilaJaAloitaUusipeli();
         }
-        Assert.assertEquals(2, testinolla.getRistinVoitot());
-        Assert.assertEquals(1, testinolla.getYmpyranVoitot());
+        Assert.assertEquals("RistinVoitot", 2, testinolla.getRistinVoitot());
+        Assert.assertEquals("YmpyranVoitot", 1, testinolla.getYmpyranVoitot());
     }
 
     // Pelataan 11 peliä joissa aina aloittaja voittaa, risti 6 ja ympyra 5
@@ -289,8 +295,8 @@ public class LogiikkaTest {
             aloittajaVoittaaVaakarivilla();
             tarkistaPelintilaJaAloitaUusipeli();
         }
-        Assert.assertEquals(5, testinolla.getYmpyranVoitot());
-        Assert.assertEquals(6, testinolla.getRistinVoitot());
+        Assert.assertEquals("YmpyranVoitot", 5, testinolla.getYmpyranVoitot());
+        Assert.assertEquals("RistinVoitot", 6, testinolla.getRistinVoitot());
     }
 
     @Test
@@ -301,8 +307,8 @@ public class LogiikkaTest {
         tarkistaPelintilaJaAloitaUusipeli();
         aloittajaVoittaaVaakarivilla();
         tarkistaPelintilaJaAloitaUusipeli();
-        Assert.assertEquals("Ympyranvoitot", 0, testinolla.getYmpyranVoitot());
-        Assert.assertEquals(2, testinolla.getRistinVoitot());
+        Assert.assertEquals("YmpyranVoitot", 0, testinolla.getYmpyranVoitot());
+        Assert.assertEquals("RistinVoitot", 2, testinolla.getRistinVoitot());
     }
 
     @Test
@@ -311,7 +317,7 @@ public class LogiikkaTest {
         tarkistaPelintilaJaAloitaUusipeli();
         tasapeli();
         tarkistaPelintilaJaAloitaUusipeli();
-        Assert.assertEquals(0, testinolla.getYmpyranVoitot());
-        Assert.assertEquals(0, testinolla.getRistinVoitot());
+        Assert.assertEquals("YmpyranVoitot", 0, testinolla.getYmpyranVoitot());
+        Assert.assertEquals("RistinVoitot", 0, testinolla.getRistinVoitot());
     }
 }
