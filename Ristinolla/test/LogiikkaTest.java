@@ -172,7 +172,8 @@ public class LogiikkaTest {
         testinolla.setMerkkiRuutuun(8);
         testinolla.setMerkkiRuutuun(8);
         testinolla.setMerkkiRuutuun(0);
-        Assert.assertEquals(3, testinolla.getMerkkienMaara());
+        Assert.assertEquals("Merkkejä yhteensä", 3, testinolla.getMerkkienMaara());
+        Assert.assertEquals("Merkki ruudussa 0 on väärä", 1, testinolla.getRuudunMerkki(0));
     }
 
     @Test
