@@ -10,7 +10,7 @@ public final class Logiikka {
     }
 
     public void uusiPeli() {
-        for (int i = 0; i < pelialusta.length; i++) {
+        for (int i = 0; i < 9; i++) {
             this.pelialusta[i] = 0;
         }
         pelinumero++;
@@ -51,14 +51,16 @@ public final class Logiikka {
     }
 
     public void setMerkkiRuutuun(int ruutu) {
-        if (this.pelialusta[ruutu] == 0) {
-            if (ruutu >= 0 && ruutu < 9) {
-                this.pelialusta[ruutu] = getPelivuorossa();
+        if (ruutu >= 0 && ruutu < 9) {
+            if (tarkistaLoppuikoPeli()) {
+                throw new IllegalStateException("");
+            } else if(this.pelialusta[ruutu] != 0) {
+                throw new IllegalArgumentException("");
             } else {
-                throw new IllegalArgumentException("Ruudun tulee olla ruudukon sisällä");
+                this.pelialusta[ruutu] = getPelivuorossa();
             }
         } else {
-            throw new IllegalArgumentException("Ruudussa on jo merkki");
+            throw new IllegalArgumentException("");
         }
     }
 
