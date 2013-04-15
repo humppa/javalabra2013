@@ -11,4 +11,5 @@ Päivämäärä - Käytetty aika - Tuntia ja minuuttia - Ajankäytön kohde
 15.4	   - 6h					 - RistinollaUIn suunnittelu ja ohjelmointi, Mouseover luokan tekeminen ja testailu, 
 						   Logiikan metodin setMerkkiruutuun korjaaminen, Actionlistenerin opiskelua ja ohjelmointia,
 						   (Testien rikkomista logiikan osalta 67% meni läpi)
-16.4	   - 
+16.4	   - 2h					 - Pelilaudalle merkit x ja o kirjaimin, tyhjentää laudan uuden pelin alkaessa,
+						   ongelman ratkaisua liittyen voittolaskurin satunnaisuuteen
