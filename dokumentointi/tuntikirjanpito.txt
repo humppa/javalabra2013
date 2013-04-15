@@ -8,3 +8,7 @@ Päivämäärä - Käytetty aika - Tuntia ja minuuttia - Ajankäytön kohde
 						   testien kommentteja
 26.3	   - 3h					 - Testien virhetilanteiden käsittelyyn tutustumista, koodin refaktorointia
 26.3	   - 2h					 - Logiikan refaktorointi, luokkakaaviov2
+15.4	   - 6h					 - RistinollaUIn suunnittelu ja ohjelmointi, Mouseover luokan tekeminen ja testailu, 
+						   Logiikan metodin setMerkkiruutuun korjaaminen, Actionlistenerin opiskelua ja ohjelmointia,
+						   (Testien rikkomista logiikan osalta 67% meni läpi)
+16.4	   - 
