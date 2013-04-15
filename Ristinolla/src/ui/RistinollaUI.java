@@ -12,6 +12,8 @@ public class RistinollaUI implements Runnable {
     private JLabel peliVuorossa;
     private int peliloppui;
     private MouseOver nappula;
+    private JLabel ristinVoitot;
+    private JLabel ympyranVoitot;
 
     public RistinollaUI(Logiikka logiikka) {
         ui.setSize(500, 550);
@@ -37,7 +39,7 @@ public class RistinollaUI implements Runnable {
         uusiPeli.setBackground(Color.white);
         uusiPeli.setActionCommand("NEWGAME");
         uusiPeli.addActionListener(new RistinollaActionListener(this, logiikka));
-        peliVuorossa = new JLabel("Player " + logiikka.getPelivuorossa());
+        peliVuorossa = new JLabel("Turn: Player " + logiikka.getPelivuorossa());
         peliVuorossa.setHorizontalAlignment(JLabel.CENTER);
         JButton exit = new JButton("Exit");
         exit.setActionCommand("EXIT");
@@ -61,8 +63,8 @@ public class RistinollaUI implements Runnable {
         }
 
         JPanel alapalkki = new JPanel();
-        JLabel ristinVoitot = new JLabel("P1: " + logiikka.getRistinVoitot());
-        JLabel ympyranVoitot = new JLabel("P2: " + logiikka.getYmpyranVoitot());
+        ristinVoitot = new JLabel("P1: " + logiikka.getRistinVoitot());
+        ympyranVoitot = new JLabel("P2: " + logiikka.getYmpyranVoitot());
         alapalkki.add(ristinVoitot);
         alapalkki.add(ympyranVoitot);
 
@@ -76,6 +78,13 @@ public class RistinollaUI implements Runnable {
     }
 
     public void paivita() {
+        for (int i = 0; i<9; i++) {
+            if (logiikka.getRuudunMerkki(i) == 1) {
+                pelilauta[i].setText("x");
+            } else if (logiikka.getRuudunMerkki(i) == 2) {
+                pelilauta[i].setText("o");
+            } 
+        }
         if (peliloppui == 0) {
             if (logiikka.tarkistaLoppuikoPeli() == true) {
                 if (logiikka.tarkistaVoittaja() == 0) {
@@ -83,21 +92,31 @@ public class RistinollaUI implements Runnable {
                     peliLoppui();
                 } else {
                     JOptionPane.showMessageDialog(null, "Player " + logiikka.tarkistaVoittaja() + " wins!");
+                    if (logiikka.tarkistaVoittaja() == 1) {
+                        ristinVoitot.setText("P1: " + logiikka.getRistinVoitot());
+                    } else {
+                        ympyranVoitot.setText("P2: " + logiikka.getYmpyranVoitot());
+                    }
                     peliLoppui();
                 }
             } else {
-                peliVuorossa.setText("Player " + logiikka.getPelivuorossa());
-                
+                peliVuorossa.setText("Turn: Player " + logiikka.getPelivuorossa());
             }
         }
     }
-    
+
     public void setPeliLoppui() {
         peliloppui = 0;
     }
-    
+
     public void peliLoppui() {
         peliloppui = 1;
         peliVuorossa.setText("Game over");
+    }
+    
+    public void tyhjennaPelilauta() {
+        for (int i = 0; i<9; i++) {
+            pelilauta[i].setText("");
+        }
     }
 }

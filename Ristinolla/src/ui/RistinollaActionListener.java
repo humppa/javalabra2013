@@ -34,11 +34,12 @@ public class RistinollaActionListener implements ActionListener {
                     this.ui.setPeliLoppui();
                     this.logiikka.uusiPeli();
                     ui.paivita();
+                    ui.tyhjennaPelilauta();
                     break;
             }
         } else {
             try {
-                logiikka.setMerkkiRuutuun(ruutu);
+                logiikka.setMerkkiRuutuun(ruutu);               
             } catch (IllegalArgumentException a) {
                 JOptionPane.showMessageDialog(ui.getFrame(), "SQUARE HAS MARK ALREADY, PICK ANOTHER", "GAME STATUS", JOptionPane.WARNING_MESSAGE);
             } catch (IllegalStateException b) {
@@ -46,7 +47,7 @@ public class RistinollaActionListener implements ActionListener {
             } catch (Throwable t) {
                 JOptionPane.showMessageDialog(ui.getFrame(), "Logiika's asetaMerkki()-method throws exception: " + t, "ERROR", JOptionPane.ERROR);
             }
-            ui.paivita();
+                ui.paivita();
         }
     }
 }

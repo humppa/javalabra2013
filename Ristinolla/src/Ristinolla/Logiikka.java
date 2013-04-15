@@ -42,7 +42,7 @@ public final class Logiikka {
     }
     public int getMerkkienMaara() {
         int merkkeja = 0;
-        for (int i = 0; i < this.pelialusta.length; i++) {
+        for (int i = 0; i < 9; i++) {
             if (this.pelialusta[i] == 1 || this.pelialusta[i] == 2) {
                 merkkeja++;
             }
@@ -65,7 +65,7 @@ public final class Logiikka {
     }
 
     public int getRuudunMerkki(int ruutu) {
-        if (this.pelialusta[ruutu] == 0 && ruutu < 9 && ruutu >= 0) {
+        if (ruutu < 9 && ruutu >= 0) {
             return this.pelialusta[ruutu];
         } else {
             throw new IllegalArgumentException("Ruutu on pelialustan ulkopuolella");
@@ -75,8 +75,9 @@ public final class Logiikka {
     public int tarkistaVoittaja() {
         if (this.getMerkkienMaara() < 5) {
             return 0;
+        } else {
+            return tarkistaPystyrivit() + tarkistaVaakarivit() + tarkistaVinorivit();
         }
-        return tarkistaPystyrivit() + tarkistaVaakarivit() + tarkistaVinorivit();
     }
     
     public int tarkistaPystyrivit() {
@@ -103,7 +104,7 @@ public final class Logiikka {
         if (this.pelialusta[0] != 0 && this.pelialusta[0] == this.pelialusta[4] && this.pelialusta[0] == this.pelialusta[8]) {
             return this.pelialusta[0];
         }
-        if (this.pelialusta[0] != 0 && this.pelialusta[2] == this.pelialusta[4] && this.pelialusta[2] == this.pelialusta[6]) {
+        if (this.pelialusta[2] != 0 && this.pelialusta[2] == this.pelialusta[4] && this.pelialusta[2] == this.pelialusta[6]) {
             return this.pelialusta[2];
         }
         return 0;
@@ -123,10 +124,10 @@ public final class Logiikka {
     }
 
     public void kasvataVoittolaskuria(int voittaja) {
-        if (voittaja == 1) {
-            this.ristinVoitot++;
-        } else if (voittaja == 2) {
+        if (voittaja == 2) {
             this.ympyranVoitot++;
+        } else if (voittaja == 1) {
+            this.ristinVoitot++;
         }
     }
 
