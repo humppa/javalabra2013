@@ -5,6 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
+/**
+ * 
+ * @author      Paavo Rohamo
+ */
 public class RistinollaActionListener implements ActionListener {
 
     private RistinollaUI ui;
@@ -41,9 +45,9 @@ public class RistinollaActionListener implements ActionListener {
             try {
                 logiikka.setMerkkiRuutuun(ruutu);               
             } catch (IllegalArgumentException a) {
-                JOptionPane.showMessageDialog(ui.getFrame(), "SQUARE HAS MARK ALREADY, PICK ANOTHER", "GAME STATUS", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(ui.getFrame(), "Square is marked, pick another", "Error", JOptionPane.WARNING_MESSAGE);
             } catch (IllegalStateException b) {
-                JOptionPane.showMessageDialog(ui.getFrame(), "GAME IS OVER", "GAME STATUS", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(ui.getFrame(), "Press RESTART to play again", "Game over", JOptionPane.INFORMATION_MESSAGE);
             } catch (Throwable t) {
                 JOptionPane.showMessageDialog(ui.getFrame(), "Logiika's asetaMerkki()-method throws exception: " + t, "ERROR", JOptionPane.ERROR);
             }

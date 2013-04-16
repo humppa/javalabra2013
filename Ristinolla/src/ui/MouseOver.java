@@ -1,12 +1,15 @@
 
 package ui;
 
-
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 
+/**
+ * 
+ * @author      Paavo Rohamo
+ */
 public class MouseOver extends JButton implements MouseListener {
 
     private Color defaultColor;

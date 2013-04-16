@@ -5,6 +5,10 @@ import javax.swing.SwingUtilities;
 import ui.RistinollaUI;
 
 
+/**
+ * 
+ * @author      Paavo Rohamo
+ */
 public class Ristinolla {
 
 
