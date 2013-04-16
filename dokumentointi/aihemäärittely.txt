@@ -45,3 +45,5 @@ Pelinkulku:
 Suunnitteilla:
 	
 	Yksinpeli (AI)
+
+	Menuvalikko
