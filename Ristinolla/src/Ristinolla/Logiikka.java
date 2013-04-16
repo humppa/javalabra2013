@@ -102,7 +102,13 @@ public final class Logiikka {
             throw new IllegalArgumentException("");
         }
     }
-
+    
+    /**
+     * Palauttaa ruudussa olevan merkin jos ruutu on pelilaudan sisäpuolella
+     * jos ruutu on laudan ulkopuolella palauttaa Exceptionin
+     * @param ruutu ilmoittaa mistä ruudusta merkki halutaan palauttaa
+     * @return palauttaa annetun ruudun merkin
+     */
     public int getRuudunMerkki(int ruutu) {
         if (ruutu < 9 && ruutu >= 0) {
             return this.pelialusta[ruutu];
@@ -111,6 +117,12 @@ public final class Logiikka {
         }
     }
 
+    /**
+     * Käy läpi vaaka sekä pystyrivit omissa loopeissaan jos ehdot täyttyvät 
+     * palauttaa ensimmäisenä verratussa ruudussa olevan merkin
+     * ehto lauseet käyvät läpi poikittaissuuntaiset rivit
+     * @return palauttaa 1 tai 2 jos voittaja löytyy, muuten 0
+     */
     public int tarkistaVoittaja() {
         for (int i = 0; i < 3; i++) {
             if (this.pelialusta[i] != 0 && this.pelialusta[i] == this.pelialusta[i + 3] 
@@ -140,6 +152,12 @@ public final class Logiikka {
         return 0;
     }
     
+    /**
+     * Palauttaa true jos pelilauta täyttyy ja voittajaa ei ole löydetty
+     * Jos voittaja on 1 tai 2, kasvatetaan voittolaskuria ja palautetaan true
+     * muissa tapauksissa palauttaa false
+     * @return true tai false
+     */
     public boolean tarkistaLoppuikoPeli() {
         if (getMerkkienMaara() == 9 && tarkistaVoittaja() == 0) {
             return true;
@@ -153,6 +171,10 @@ public final class Logiikka {
         }
     }
 
+    /**
+     * Kasvattaa joko ympyran voittoja tai ristinvoittoja yhdellä
+     * @param voittaja maarittaa kumman merkin voittoja kasvatetaan
+     */
     public void kasvataVoittolaskuria(int voittaja) {
         if (voittaja == 2) {
             this.ympyranVoitot++;
@@ -161,14 +183,26 @@ public final class Logiikka {
         }
     }
 
+    /**
+     * 
+     * @return palauttaa ristin voittojen määrän
+     */
     public int getRistinVoitot() {
         return this.ristinVoitot;
     }
 
+    /**
+     * 
+     * @return palauttaa ympyrän voittojen määrän 
+     */
     public int getYmpyranVoitot() {
         return this.ympyranVoitot;
     }
-
+    
+    /**
+     * 
+     * @return palauttaa pelin järjestysnumeron
+     */
     public int pelinumero() {
         return this.pelinumero;
     }

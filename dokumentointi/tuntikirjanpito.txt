@@ -13,3 +13,6 @@ Päivämäärä - Käytetty aika - Tuntia ja minuuttia - Ajankäytön kohde
 						   (Testien rikkomista logiikan osalta 67% meni läpi)
 16.4	   - 2h					 - Pelilaudalle merkit x ja o kirjaimin, tyhjentää laudan uuden pelin alkaessa,
 						   ongelman ratkaisua liittyen voittolaskurin satunnaisuuteen
+16.4	   - 4h					 - JavaDocin aloitus, Käyttöliittymän parantelua ja versio 1.1 pelistä valmiiksi
+						   Yksi bugi löydetty ja korjattu, jossain vielä yksi joka sekoittaa pistelaskuria
+						   Risti ja nolla ikonit peliin
