@@ -18,7 +18,9 @@ public class LogiikkaTest {
         testinolla = new Logiikka();
     }
 
-    //  Aloittaja voittaa pelin vaakarivilla;
+    /**
+     * Aloittaja voittaa pelin vaakarivilla
+     */
     public void aloittajaVoittaaVaakarivilla() {
         testinolla.setMerkkiRuutuun(0);
         testinolla.setMerkkiRuutuun(4);
@@ -27,7 +29,9 @@ public class LogiikkaTest {
         testinolla.setMerkkiRuutuun(2);
     }
 
-    //  Toisena tuleva voittaa pelin vaakarivilla;
+    /**
+     * Toisena vuorossa oleva voittaa pelin vaakarivilla
+     */
     public void toinenVoittaaVaakarivilla() {
         testinolla.setMerkkiRuutuun(4);
         testinolla.setMerkkiRuutuun(0);
@@ -37,6 +41,9 @@ public class LogiikkaTest {
         testinolla.setMerkkiRuutuun(2);
     }
 
+    /**
+     * Peli päättyy tasan
+     */
     public void tasapeli() {
         testinolla.setMerkkiRuutuun(0);
         testinolla.setMerkkiRuutuun(1);
@@ -48,12 +55,33 @@ public class LogiikkaTest {
         testinolla.setMerkkiRuutuun(8);
         testinolla.setMerkkiRuutuun(7);
     }
+    
+    /**
+     * Laudalta puuttuu yksi merkki
+     */
+    public void kahdeksanMerkkiaLaudalla() {
+        testinolla.setMerkkiRuutuun(0);
+        testinolla.setMerkkiRuutuun(1);
+        testinolla.setMerkkiRuutuun(3);
+        testinolla.setMerkkiRuutuun(4);
+        testinolla.setMerkkiRuutuun(7);
+        testinolla.setMerkkiRuutuun(6);
+        testinolla.setMerkkiRuutuun(5);
+        testinolla.setMerkkiRuutuun(8);
+    }
 
+    /**
+     * Tarkistaa pelin tilan ja aloittaa uuden pelin
+     */
     public void tarkistaPelintilaJaAloitaUusipeli() {
         testinolla.tarkistaLoppuikoPeli();
         testinolla.uusiPeli();
     }
 
+    /**
+     * Aloittaa uuden pelin
+     * @param montako montako kertaa aloittaa uuden pelin
+     */
     public void uusiPeli(int montako) {
         for (int i = 0; i < montako; i++) {
             testinolla.uusiPeli();
@@ -106,9 +134,7 @@ public class LogiikkaTest {
 
     @Test
     public void testaaPelivuoroToimiiOikeinEkassaPelissaViimeisellaVuorolla() {
-        for (int i = 0; i < 8; i++) {
-            testinolla.setMerkkiRuutuun(i);
-        }
+        kahdeksanMerkkiaLaudalla();
         Assert.assertEquals(1, testinolla.getPelivuorossa());
     }
 
@@ -128,9 +154,7 @@ public class LogiikkaTest {
     @Test
     public void testaaPelivuoroToimiiOikeinTokassaPelissaViimeisellaVuorolla() {
         uusiPeli(1);
-        for (int i = 0; i < 8; i++) {
-            testinolla.setMerkkiRuutuun(i);
-        }
+        kahdeksanMerkkiaLaudalla();
         Assert.assertEquals(2, testinolla.getPelivuorossa());
     }
 
@@ -146,13 +170,13 @@ public class LogiikkaTest {
     }
 
     //  Pelilaudan ulkopuolelle asetettava merkki heittää virheilmoituksen;
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void pelilaudanUlkopuolelleEiVoiAsettaaMerkkia() {
         testinolla.setMerkkiRuutuun(10);
     }
     
     //  Pelilaudan ulkopuolelle asetettava merkki heittää virheilmoituksen;
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void pelilaudanUlkopuolelleEiVoiAsettaaMerkkeja() {
         testinolla.setMerkkiRuutuun(-100);
         testinolla.setMerkkiRuutuun(77);
@@ -322,5 +346,31 @@ public class LogiikkaTest {
         tarkistaPelintilaJaAloitaUusipeli();
         Assert.assertEquals("YmpyranVoitot", 0, testinolla.getYmpyranVoitot());
         Assert.assertEquals("RistinVoitot", 0, testinolla.getRistinVoitot());
+    }
+    
+    @Test
+    public void testaaTasapeliJaVoittojenMaaraUseassaPelissa() {
+        for (int i = 0; i<100; i++) {
+            tasapeli();
+            tarkistaPelintilaJaAloitaUusipeli();
+        }
+        Assert.assertEquals("YmpyranVoitot", 0, testinolla.getYmpyranVoitot());
+        Assert.assertEquals("RistinVoitot", 0, testinolla.getRistinVoitot());
+    }
+    
+    
+    @Test
+    public void testaaVoittoJossaVoittoMahdollisuuksiaUseita() {
+        testinolla.setMerkkiRuutuun(0);
+        testinolla.setMerkkiRuutuun(1);
+        testinolla.setMerkkiRuutuun(2);
+        testinolla.setMerkkiRuutuun(5);
+        testinolla.setMerkkiRuutuun(8);
+        testinolla.setMerkkiRuutuun(7);
+        testinolla.setMerkkiRuutuun(6);
+        testinolla.setMerkkiRuutuun(3);
+        testinolla.setMerkkiRuutuun(4);
+        tarkistaPelintilaJaAloitaUusipeli();
+        Assert.assertEquals("RistinVoitot", 1, testinolla.getRistinVoitot()); 
     }
 }

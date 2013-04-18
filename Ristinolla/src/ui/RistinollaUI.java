@@ -18,7 +18,7 @@ public class RistinollaUI implements Runnable {
     private JButton[] pelilauta = new JButton[9];
     private Logiikka logiikka;
     private JLabel peliVuorossa;
-    private int peliloppui;
+    private boolean peliloppui;
     private MouseOver nappula;
     private JLabel ristinVoitot;
     private JLabel ympyranVoitot;
@@ -32,7 +32,7 @@ public class RistinollaUI implements Runnable {
         ui.setLayout(new BorderLayout());
         ui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.logiikka = logiikka;
-        this.peliloppui = 0;
+        this.peliloppui = false;
     }
 
     @Override
@@ -97,14 +97,8 @@ public class RistinollaUI implements Runnable {
     }
 
     public void paivita() {
-        for (int i = 0; i<9; i++) {
-            if (logiikka.getRuudunMerkki(i) == 1) {
-                pelilauta[i].setIcon(new ImageIcon("src/resources/risti2.jpg"));
-            } else if (logiikka.getRuudunMerkki(i) == 2) {
-                pelilauta[i].setIcon(new ImageIcon("src/resources/ympyra2.jpg"));
-            } 
-        }
-        if (peliloppui == 0) {
+        this.paivitaRuudut();
+        if (peliloppui == false) {
             if (logiikka.tarkistaLoppuikoPeli() == true) {
                 if (logiikka.tarkistaVoittaja() == 0) {
                     JOptionPane.showMessageDialog(null, "Tie game!");
@@ -124,19 +118,31 @@ public class RistinollaUI implements Runnable {
         }
     }
 
+    public void paivitaRuudut() {
+        for (int i = 0; i<9; i++) {
+            if (logiikka.getRuudunMerkki(i) == 1) {
+                pelilauta[i].setIcon(new ImageIcon("src/resources/risti2.jpg"));
+            } else if (logiikka.getRuudunMerkki(i) == 2) {
+                pelilauta[i].setIcon(new ImageIcon("src/resources/ympyra2.jpg"));
+            } 
+        }
+    }
+    
     public void setPeliLoppui() {
-        peliloppui = 0;
+        peliloppui = false;
     }
 
-    public void peliLoppui() {
-        peliloppui = 1;
-        peliVuorossa.setText("Game over");
-    }
+    
     
     public void tyhjennaPelilauta() {
         for (int i = 0; i<9; i++) {
             pelilauta[i].setIcon(null);
         }
+    }
+    
+    public void peliLoppui() {
+        peliloppui = true;
+        peliVuorossa.setText("Game over");
     }
     
     public String getVoittaja() {
