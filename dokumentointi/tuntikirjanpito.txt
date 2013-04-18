@@ -16,3 +16,4 @@ Päivämäärä - Käytetty aika - Tuntia ja minuuttia - Ajankäytön kohde
 16.4	   - 5h					 - JavaDocin aloitus, Käyttöliittymän parantelua ja versio 1.1 pelistä valmiiksi
 						   Yksi bugi löydetty ja korjattu, jossain vielä yksi joka sekoittaa pistelaskuria
 						   Risti ja nolla ikonit peliin, sekvenssikaavioiden tekeminen
+18.4	   - 3h					 - Testien korjaaminen sekä parantelu, koodiin muutama korjaus. AI -luokan teon aloittaminen.	
