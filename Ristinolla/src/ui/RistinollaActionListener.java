@@ -6,8 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 /**
- * 
- * @author      Paavo Rohamo
+ *
+ * @author rohamo
  */
 public class RistinollaActionListener implements ActionListener {
 
@@ -35,10 +35,11 @@ public class RistinollaActionListener implements ActionListener {
                     System.exit(0);
                     break;
                 case "NEWGAME":
+                    ui.paivita();
                     ui.setPeliLoppui();
+                    ui.tyhjennaPelilauta();
                     logiikka.uusiPeli();
                     ui.paivita();
-                    ui.tyhjennaPelilauta();
                     break;
             }
         } else {
@@ -52,7 +53,6 @@ public class RistinollaActionListener implements ActionListener {
             } catch (Throwable t) {
                 JOptionPane.showMessageDialog(ui.getFrame(), "Logiika's asetaMerkki()-method throws exception: " + t, "ERROR", JOptionPane.ERROR);
             }
-                
         }
     }
 }

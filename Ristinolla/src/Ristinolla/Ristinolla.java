@@ -7,7 +7,7 @@ import ui.RistinollaUI;
 
 /**
  * 
- * @author      Paavo Rohamo
+ * @author      rohamo
  */
 public class Ristinolla {
 

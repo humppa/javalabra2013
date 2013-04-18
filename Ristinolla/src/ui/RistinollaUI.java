@@ -1,5 +1,6 @@
 package ui;
 
+import Ristinolla.AI;
 import Ristinolla.Logiikka;
 import java.awt.*;
 import java.io.IOException;
@@ -7,23 +8,24 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /**
- * 
- * @author      Paavo Rohamo
- * 
+ *
+ * @author rohamo
+ *
  * Luo ohjelmalle käyttöliittymä näkymän ja päivittää sitä tarvittaessa
  */
 public class RistinollaUI implements Runnable {
 
-    private JFrame ui = new JFrame("Tic-tac-toe (Version 1.1)");
+    private JFrame ui = new JFrame("Tic-tac-toe (Version 1.2)");
     private JButton[] pelilauta = new JButton[9];
     private Logiikka logiikka;
-    private JLabel peliVuorossa;
-    private boolean peliloppui;
     private MouseOver nappula;
+    private JLabel peliVuorossa;
     private JLabel ristinVoitot;
     private JLabel ympyranVoitot;
     private String p1;
     private String p2;
+    private boolean peliloppui;
+    private int merkkienmaara;
 
     public RistinollaUI(Logiikka logiikka) {
         ui.setSize(360, 410);
@@ -33,6 +35,7 @@ public class RistinollaUI implements Runnable {
         ui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.logiikka = logiikka;
         this.peliloppui = false;
+        this.merkkienmaara = 0;
     }
 
     @Override
@@ -51,7 +54,7 @@ public class RistinollaUI implements Runnable {
         uusiPeli.setBackground(Color.LIGHT_GRAY);
         uusiPeli.setActionCommand("NEWGAME");
         uusiPeli.addActionListener(new RistinollaActionListener(this, logiikka));
-        
+
         JButton exit = new JButton("Exit");
         exit.setActionCommand("EXIT");
         exit.addActionListener(new RistinollaActionListener(this, logiikka));
@@ -73,20 +76,20 @@ public class RistinollaUI implements Runnable {
         }
         JPanel alapalkki = new JPanel();
         alapalkki.setBackground(Color.LIGHT_GRAY);
-        GridLayout alapalkinlayout = new GridLayout(1,3);
+        GridLayout alapalkinlayout = new GridLayout(1, 3);
         alapalkki.setLayout(alapalkinlayout);
-        
+
         peliVuorossa = new JLabel("Turn: Player " + logiikka.getPelivuorossa());
-        peliVuorossa.setHorizontalAlignment(JLabel.CENTER); 
-        
+        peliVuorossa.setHorizontalAlignment(JLabel.CENTER);
+
         ristinVoitot = new JLabel(p1 + ": " + logiikka.getRistinVoitot());
         ristinVoitot.setHorizontalAlignment(JLabel.CENTER);
         ristinVoitot.setForeground(Color.BLUE);
-        
+
         ympyranVoitot = new JLabel(p2 + ": " + logiikka.getYmpyranVoitot());
         ympyranVoitot.setHorizontalAlignment(JLabel.CENTER);
         ympyranVoitot.setForeground(Color.red);
-        
+
         alapalkki.add(peliVuorossa);
         alapalkki.add(ristinVoitot);
         alapalkki.add(ympyranVoitot);
@@ -98,18 +101,20 @@ public class RistinollaUI implements Runnable {
 
     public void paivita() {
         this.paivitaRuudut();
+        if (logiikka.getPelivuorossa() == 2 && logiikka.tarkistaLoppuikoPeli() == false && logiikka.statusAI() == true) {
+            logiikka.asetaMerkkiAI();
+            this.paivitaRuudut();
+        }
         if (peliloppui == false) {
             if (logiikka.tarkistaLoppuikoPeli() == true) {
                 if (logiikka.tarkistaVoittaja() == 0) {
-                    JOptionPane.showMessageDialog(null, "Tie game!");
+                    JOptionPane.showMessageDialog(getFrame(), "Tie game!", "It's a tie", JOptionPane.INFORMATION_MESSAGE);
                     peliLoppui();
                 } else {
                     JOptionPane.showMessageDialog(getFrame(), getVoittaja() + " wins!", "Victory!", JOptionPane.INFORMATION_MESSAGE);
-                    if (logiikka.tarkistaVoittaja() == 1) {
-                        ristinVoitot.setText(p1 + ": " + logiikka.getRistinVoitot());
-                    } else {
-                        ympyranVoitot.setText(p2 + ": " + logiikka.getYmpyranVoitot());
-                    }
+                    logiikka.kasvataVoittolaskuria(logiikka.tarkistaVoittaja());
+                    ristinVoitot.setText(p1 + ": " + logiikka.getRistinVoitot());
+                    ympyranVoitot.setText(p2 + ": " + logiikka.getYmpyranVoitot());
                     peliLoppui();
                 }
             } else {
@@ -119,32 +124,30 @@ public class RistinollaUI implements Runnable {
     }
 
     public void paivitaRuudut() {
-        for (int i = 0; i<9; i++) {
+        for (int i = 0; i < 9; i++) {
             if (logiikka.getRuudunMerkki(i) == 1) {
                 pelilauta[i].setIcon(new ImageIcon("src/resources/risti2.jpg"));
             } else if (logiikka.getRuudunMerkki(i) == 2) {
                 pelilauta[i].setIcon(new ImageIcon("src/resources/ympyra2.jpg"));
-            } 
+            }
         }
     }
-    
+
+    public void tyhjennaPelilauta() {
+        for (int i = 0; i < 9; i++) {
+            pelilauta[i].setIcon(null);
+        }
+    }
+
     public void setPeliLoppui() {
         peliloppui = false;
     }
 
-    
-    
-    public void tyhjennaPelilauta() {
-        for (int i = 0; i<9; i++) {
-            pelilauta[i].setIcon(null);
-        }
-    }
-    
     public void peliLoppui() {
         peliloppui = true;
         peliVuorossa.setText("Game over");
     }
-    
+
     public String getVoittaja() {
         if (logiikka.tarkistaVoittaja() == 1) {
             return p1;
@@ -152,7 +155,7 @@ public class RistinollaUI implements Runnable {
             return p2;
         }
     }
-    
+
     public JFrame getFrame() {
         return ui;
     }

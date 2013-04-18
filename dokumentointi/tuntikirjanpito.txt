@@ -1,19 +1,33 @@
-Päivämäärä - Käytetty aika - Tuntia ja minuuttia - Ajankäytön kohde
+Päivämäärä - Käytetty aika  	- Ajankäytön kohde
 
-12.3	   - 30min				 - Github valmistelu ja aihemäärittelyn aloitus
-19.3	   - 3h - 4h				 - Ohjelmoinnin aloitus, Ensimmäiset testit, määrittelyvaiheen luokkakaavio
-						   Perehtyminen aineistoon
-25.3	   - 3h					 - Koodaamista, Testejä lisää
-26.3	   - 2h 				 - Lisää testejä, testien refaktorointia ja optimointia, voittomäärien laskuri, 
-						   testien kommentteja
-26.3	   - 3h					 - Testien virhetilanteiden käsittelyyn tutustumista, koodin refaktorointia
-26.3	   - 2h					 - Logiikan refaktorointi, luokkakaaviov2
-15.4	   - 6h					 - RistinollaUIn suunnittelu ja ohjelmointi, Mouseover luokan tekeminen ja testailu, 
-						   Logiikan metodin setMerkkiruutuun korjaaminen, Actionlistenerin opiskelua ja ohjelmointia,
-						   (Testien rikkomista logiikan osalta 67% meni läpi)
-16.4	   - 2h					 - Pelilaudalle merkit x ja o kirjaimin, tyhjentää laudan uuden pelin alkaessa,
-						   ongelman ratkaisua liittyen voittolaskurin satunnaisuuteen
-16.4	   - 5h					 - JavaDocin aloitus, Käyttöliittymän parantelua ja versio 1.1 pelistä valmiiksi
-						   Yksi bugi löydetty ja korjattu, jossain vielä yksi joka sekoittaa pistelaskuria
-						   Risti ja nolla ikonit peliin, sekvenssikaavioiden tekeminen
-18.4	   - 3h					 - Testien korjaaminen sekä parantelu, koodiin muutama korjaus. AI -luokan teon aloittaminen.	
+12.3	   - 30min		- Github valmistelu ja aihemäärittelyn aloitus
+
+19.3	   - 3h - 4h		- Ohjelmoinnin aloitus, Ensimmäiset testit, määrittelyvaiheen luokkakaavio
+				  Perehtyminen aineistoon
+
+25.3	   - 3h			- Koodaamista, Testejä lisää
+
+26.3	   - 2h 		- Lisää testejä, testien refaktorointia ja optimointia, voittomäärien laskuri, 
+				  testien kommentteja
+
+26.3	   - 3h			- Testien virhetilanteiden käsittelyyn tutustumista, koodin refaktorointia
+
+26.3	   - 2h			- Logiikan refaktorointi, luokkakaaviov2
+
+15.4	   - 6h			- RistinollaUIn suunnittelu ja ohjelmointi, Mouseover luokan tekeminen ja testailu, 
+				  Logiikan metodin setMerkkiruutuun korjaaminen, Actionlistenerin opiskelua ja ohjelmointia,
+				  (Testien rikkomista logiikan osalta 67% meni läpi)
+
+16.4	   - 2h			- Pelilaudalle merkit x ja o kirjaimin, tyhjentää laudan uuden pelin alkaessa,
+				  ongelman ratkaisua liittyen voittolaskurin satunnaisuuteen
+
+16.4	   - 5h			- JavaDocin aloitus, Käyttöliittymän parantelua ja versio 1.1 pelistä valmiiksi
+				  Yksi bugi löydetty ja korjattu, jossain vielä yksi joka sekoittaa pistelaskuria
+				  Risti ja nolla ikonit peliin, sekvenssikaavioiden tekeminen
+
+18.4	   - 3h			- Testien korjaaminen sekä parantelu, koodiin muutama korjaus. AI -luokan teon aloittaminen.
+				  Tekoälyn saattaminen toimintaan, pelaajan pistelaskurissa vikaa tällä hetkellä pelattaessa 
+				  AI:ta vastaan.
+
+19.4	   - 2h			- Pistelaskurikorjattu todennäköisesti, AI enable/disablen lisäys kesken käyttöliittymään suunnitteilla menu
+				  josta pystyy valitsemaan yksinpelin tai kaksinpelin, yms.	

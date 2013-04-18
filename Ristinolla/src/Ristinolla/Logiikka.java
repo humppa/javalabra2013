@@ -1,8 +1,10 @@
 package Ristinolla;
 
+import java.util.Random;
+
 /**
  * 
- * @author      Paavo Rohamo
+ * @author      rohamo
  * 
  * Luo ohjelmalle toiminnallisuuden, pelialustan sekä merkit
  * Laskee pelienmäärää, voittojenmäärää sekä pelintilaa
@@ -18,14 +20,17 @@ public final class Logiikka {
      * Pelattujen pelien määrä sekä ristin ja ympyran voitot alustetaan nolliksi
      */
     private int pelinumero, ristinVoitot, ympyranVoitot = 0;
+    private AI ai;
+    private boolean aistatus;
     
     /**
      * Konstruktori käynnistää uudenpelin
      */
     public Logiikka() {
+        setAI();
         uusiPeli();
     }
-
+    
     /**
      * Uusipeli alustaa pelilaudan taulukon nolliksi
      * sekä kasvattaa pelattujen pelien määrää yhdellä
@@ -163,7 +168,6 @@ public final class Logiikka {
             return true;
         } else {
             if (tarkistaVoittaja() == 1 | tarkistaVoittaja() == 2) {
-                kasvataVoittolaskuria(tarkistaVoittaja());
                 return true;
             } else {
                 return false;
@@ -205,5 +209,40 @@ public final class Logiikka {
      */
     public int pelinumero() {
         return this.pelinumero;
+    }
+    
+    public void setAI() {
+        ai = new AI(this);
+    }
+    
+    public void enableAI() {
+        aistatus = true;
+    }
+    
+    public void disableAI() {
+        aistatus = false;
+    }
+    
+    public boolean statusAI() {
+        if (aistatus == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public void asetaMerkkiAI() {
+        if (ai.getSiirto() == 9) {
+            Random r = new Random();
+            while (true) {
+                int arvottu = r.nextInt(9);
+                if (this.getRuudunMerkki(arvottu) == 0) {
+                    this.setMerkkiRuutuun(arvottu);
+                    break;
+                }
+            }
+        } else {
+           this.setMerkkiRuutuun(ai.getSiirto()); 
+        }       
     }
 }

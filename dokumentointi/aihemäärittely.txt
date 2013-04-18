@@ -42,8 +42,29 @@ Pelinkulku:
 	Seuraavan pelin aloittaa pelaaja1 (X)
 
 	
+
+
+Pelintila:
+
+	v0.9 - Logiikka, pistelaskuri
+		- Tässä vaiheessa logiikka toimi kuten piti ja junit testejä luokalle 34
+		- Muita luokkia ei vielä aloitettu tekemään
+
+	v1.1 - UI, Kaksinpeli, MouseOver
+		- UI valmiina ja peliä pystyi pelaamaan kaksinpelinä
+		- MouseOver värjää ruudun hiiren alapuolella mustaksi
+		- Bugi vaivasi pistelaskuria
+
+	v1.2 - AI
+		- Teköäly toimii
+		- Pystyy pelaamaan yksin tai kaksinpelinä riippuen koodista (menu tulossa)
+		- Pistelaskurissa taas bugi joka johtui AI:n käytön rakenteesta
+
+
 Suunnitteilla:
 	
-	Yksinpeli (AI)
+	Yksinpeli (done)
 
-	Menuvalikko
+	Menuvalikko 
+
+	MouseOverin hiomista
