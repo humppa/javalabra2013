@@ -29,20 +29,17 @@ public class RistinollaActionListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String cmd = e.getActionCommand();
-        if (cmd.equals("EXIT") || cmd.equals("NEWGAME")) {
-            switch (cmd) {
-                case "EXIT":
-                    System.exit(0);
-                    break;
-                case "NEWGAME":
-                    ui.paivita();
-                    ui.setPeliLoppui();
-                    ui.tyhjennaPelilauta();
-                    logiikka.uusiPeli();
-                    ui.paivita();
-                    break;
-            }
-        } else {
+        if (cmd.equals("EXIT")) {
+            System.exit(0);
+        }
+        else if (cmd.equals("NEWGAME")) {
+            ui.paivita();
+            ui.setPeliLoppui();
+            ui.tyhjennaPelilauta();
+            logiikka.uusiPeli();
+            ui.paivita();
+        }
+        else {
             try {
                 logiikka.setMerkkiRuutuun(ruutu);
                 ui.paivita();
